@@ -64,5 +64,49 @@ namespace Assignment3_TradingCards
         }
 
 
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+            if (pictureBox.Image != null)
+            {
+                pictureBox.Image = null;
+                pictureBox.BackColor = Color.DarkSlateBlue;
+                labelName.Visible = false;
+                labelTeam.Visible = false;
+
+                labelAssists.Visible = true;
+                labelPassAccuracy.Visible = true;
+                labelRating.Visible = true;
+                labelGoalsScored.Visible = true;
+                labelHeight.Visible = true;
+            }
+            else
+            {
+                pictureBox.Image = img;
+                labelName.Visible = true;
+                labelTeam.Visible = true;
+
+                labelAssists.Visible = false;
+                labelPassAccuracy.Visible = false;
+                labelRating.Visible = false;
+                labelGoalsScored.Visible = false;
+                labelHeight.Visible = false;
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            labelName.Visible = false;
+            labelTeam.Visible = false;
+            labelAssists.Visible = false;
+            labelPassAccuracy.Visible = false;
+            labelRating.Visible = false;
+            labelGoalsScored.Visible = false;
+            labelHeight.Visible = false;
+            lbl_placeholder.Visible = false;
+            btn_Delete.Enabled = false; // delete button does not work when program first start
+
+        }
+
+
     }
 }
