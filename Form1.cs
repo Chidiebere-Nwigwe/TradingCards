@@ -64,91 +64,49 @@ namespace Assignment3_TradingCards
         }
 
 
-
-
-        private void MainList_Selected(object sender, ListViewItemSelectionChangedEventArgs e)
+        private void pictureBox_Click(object sender, EventArgs e)
         {
-            if (MainList.SelectedItems.Count > 0)
+            if (pictureBox.Image != null)
             {
-                ListViewItem selectedItem = MainList.SelectedItems[0];
-                TempItem = selectedItem;// giving to temp item
-                labelName.Text = selectedItem.SubItems[0].Text; // Update the label with the player's name
-                labelName.BackColor = Color.FromArgb(0, 204, 212, 230);
-                labelTeam.Text = selectedItem.SubItems[1].Text;
-                string imagePath = Path.Combine("Images", selectedItem.SubItems[7].Text);
-                img = Image.FromFile(imagePath); // collecting image from file path to display on pictureBox
+                pictureBox.Image = null;
+                pictureBox.BackColor = Color.DarkSlateBlue;
+                labelName.Visible = false;
+                labelTeam.Visible = false;
+
+                labelAssists.Visible = true;
+                labelPassAccuracy.Visible = true;
+                labelRating.Visible = true;
+                labelGoalsScored.Visible = true;
+                labelHeight.Visible = true;
+            }
+            else
+            {
                 pictureBox.Image = img;
-                labelGoalsScored.Text = "Goals: " + selectedItem.SubItems[2].Text;
-                labelHeight.Text = "Height: " + selectedItem.SubItems[3].Text;
-                labelAssists.Text = "Assists: " + selectedItem.SubItems[4].Text;
-                if (int.Parse(selectedItem.SubItems[5].Text) > 85)
-                {
-                    labelPassAccuracy.BackColor = Color.FromArgb(255, 0, 255, 0);
-                }
-                else
-                {
-                    labelPassAccuracy.BackColor = Color.FromArgb(255, 255, 0, 0);
-                }
-                labelPassAccuracy.Text = "Pass Accuracy: " + selectedItem.SubItems[5].Text;
-                if (int.Parse(selectedItem.SubItems[6].Text) > 85)
-                {
-                    labelRating.BackColor = Color.FromArgb(255, 0, 255, 0);
-                }
-                else
-                {
-                    labelRating.BackColor = Color.FromArgb(255, 255, 0, 0);
-                }
-                labelRating.Text = "Rating: " + selectedItem.SubItems[6].Text;
-            }
-            drawBorder = true;
+                labelName.Visible = true;
+                labelTeam.Visible = true;
 
-            //changing border colo based on player's team 
-            if (labelTeam.Text == "Inter Miami")
-            {
-                borderPen = new Pen(Color.Purple, 7);
+                labelAssists.Visible = false;
+                labelPassAccuracy.Visible = false;
+                labelRating.Visible = false;
+                labelGoalsScored.Visible = false;
+                labelHeight.Visible = false;
             }
-            if (labelTeam.Text == "Al Nassr")
-            {
-                borderPen = new Pen(Color.Yellow, 7);
-            }
-            if (labelTeam.Text == "Real Madrid")
-            {
-                borderPen = new Pen(Color.White, 7);
-            }
-            if (labelTeam.Text == "Manchester City")
-            {
-                borderPen = new Pen(Color.LightBlue, 7);
-            }
-            if (labelTeam.Text == "Al Hilal")
-            {
-                borderPen = new Pen(Color.Blue, 7);
-            }
-            if (labelTeam.Text == "Liverpool")
-            {
-                borderPen = new Pen(Color.Red, 7);
-            }
-            if (labelTeam.Text == "Bayern Munich")
-            {
-                borderPen = new Pen(Color.Red, 7);
-            }
-            if (labelTeam.Text == "Barcelona")
-            {
-                borderPen = new Pen(Color.DarkBlue, 7);
-            }
+        }
 
-
-            pictureBox.Paint += pictureBox_Paint; // subscribe to paint
-            pictureBox.Image = img; //give image to picturebox to display
-            labelName.Visible = true;
-            labelTeam.Visible = true;
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            labelName.Visible = false;
+            labelTeam.Visible = false;
 
             labelAssists.Visible = false;
             labelPassAccuracy.Visible = false;
             labelRating.Visible = false;
             labelGoalsScored.Visible = false;
             labelHeight.Visible = false;
-        }
+            lbl_placeholder.Visible = false;
+            btn_Delete.Enabled = false; // delete button does not work when program first start
 
+        }
 
 
 
