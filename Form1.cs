@@ -97,6 +97,7 @@ namespace Assignment3_TradingCards
         {
             labelName.Visible = false;
             labelTeam.Visible = false;
+
             labelAssists.Visible = false;
             labelPassAccuracy.Visible = false;
             labelRating.Visible = false;
@@ -106,6 +107,7 @@ namespace Assignment3_TradingCards
             btn_Delete.Enabled = false; // delete button does not work when program first start
 
         }
+
 
 
     }
