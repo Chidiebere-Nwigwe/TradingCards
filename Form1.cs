@@ -191,7 +191,40 @@ namespace Assignment3_TradingCards
             labelHeight.Visible = false;
         }
 
-        // Next Person.
+        // Next Person. -- KENECHUKWU
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            lbl_placeholder.Visible = true; //,ake placeholder that shows number of deleted players visible
+            if (TempItem != null)
+            {
+                deletedPlayers.Add(TempItem); // deleteing from temporarary list
+
+                comboBox1.Items.Add($"{TempItem.SubItems[0].Text}"); //adding name to comboBox that contains deleted items
+                MainList.Items.Remove(TempItem); //removing from ListView
+            }
+            lbl_placeholder.Text = "You have deleted " + deletedPlayers.Count.ToString() + " players.";
+            //Making card display to be null
+            pictureBox.Image = null;
+            pictureBox.BackColor = Color.Transparent;
+
+            drawBorder = false; //unsubscribe from paint 
+            pictureBox.Invalidate(); //redraw pictureBox
+            labelName.Text = null;
+            labelTeam.Text = null;
+            labelHeight.Text = null;
+            labelGoalsScored.Text = null;
+            labelAssists.Text = null;
+            labelPassAccuracy.Text = null;
+            labelRating.Text = null;
+
+            TempItem = null;
+        }
+
+
+        // NEXT PERSON- Anthony
+
+
 
 
 
