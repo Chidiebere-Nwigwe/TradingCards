@@ -223,7 +223,33 @@ namespace Assignment3_TradingCards
 
 
         // NEXT PERSON- Anthony
+        private void btn_Recover_Click(object sender, EventArgs e)
+        {
+            string playerNameToReturn = comboBox1.Text;
 
+            // Use a for loop to iterate through the deletedPlayers list
+            for (int i = 0; i < deletedPlayers.Count; i++)
+            {
+                ListViewItem item = deletedPlayers[i];
+
+                if (item.SubItems[0].Text == playerNameToReturn) //check if name  in list corresponds to name in comboBox
+                {
+                    MainList.Items.Add(item);  // Add back to main list
+                    deletedPlayers.RemoveAt(i);  // Remove from deleted players list
+                    i--;
+                    comboBox1.Items.Remove($"{item.SubItems[0].Text}"); //remove name from comboBox
+                    lbl_placeholder.Text = "You have deleted " + deletedPlayers.Count.ToString() + " players."; //update placeholder
+                }
+            }
+        }
+
+        private void pictureBox_Paint(object sender, PaintEventArgs e)
+        {
+            if (drawBorder)  // Only draw the border if the flag is true
+            {
+                e.Graphics.DrawRectangle(borderPen, 0, 0, pictureBox.Width - 1, pictureBox.Height - 1);
+            }
+        }
 
 
 
